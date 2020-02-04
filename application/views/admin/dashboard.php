@@ -98,7 +98,7 @@
                             <td>
                                 <form action="/admin/delete" method="post">
 
-                                    <button name="del" class="btn btn-danger" value="<?php echo $value['id'] ?>">
+                                    <button name="delete" class="btn btn-danger" value="<?php echo $value['id'] ?>">
                                         Delete
                                     </button>
 
@@ -106,7 +106,7 @@
 
                                 <form action="/admin/edit" method="post">
 
-                                    <button name="edt" class="btn btn-primary" value="<?php echo $value['id'] ?>">
+                                    <button name="edit" class="btn btn-primary" value="<?php echo $value['id'] ?>">
                                         Edit
                                     </button>
 

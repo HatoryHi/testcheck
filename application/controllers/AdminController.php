@@ -56,7 +56,7 @@ class AdminController extends Controller
 
     public function dashboardAction()
     {
-        if (empty($_SESSION)) {
+        if (empty($_SESSION['user'])) {
             return $this->view->redirect('index');
         }
         return $this->view->render('Dashboard');
@@ -64,34 +64,18 @@ class AdminController extends Controller
 
     public function createAction()
     {
+        if (empty($_SESSION['user'])) {
+            return $this->view->redirect('index');
+        }
         $this->view->render('Dashboard');
     }
 
-    public function uploadImage($image)
-    {
-        if (isset($_FILES['image'])) {
-            $image = $_FILES['image']['name'];
-            $fileTmpName = $_FILES['image']['tmp_name'];
-            $fi = finfo_open(FILEINFO_MIME_TYPE);
-            $mime = (string)finfo_file($fi, $fileTmpName);
-            if (strpos($mime, 'image') === false) {
-                die('NE KARTINKA');
-            }
-            $name = $image; //name image
-            $tmp_name = $_FILES['image']['tmp_name']; // get tmp name
-            move_uploaded_file($tmp_name, ROOT . UPLOAD_IMG . $name);
-            $new_path = ROOT . UPLOAD_IMG . $name;
-
-            return $new_path;
-        }
-        return false;
-    }
 
     public function saveAction()
     {
         $id = $_POST['id'];
         $title = $_POST['title'];
-        $image = $this->uploadImage($_FILES['image']);
+        $image = $this->adminModel->uploadImage($_FILES['image']);
         $link = $_POST['link'];
         $status = $_POST['status'];
         $pos = $_POST['position'];
@@ -120,6 +104,9 @@ class AdminController extends Controller
 
     public function editAction()
     {
+        if (empty($_SESSION['user'])) {
+            return $this->view->redirect('index');
+        }
         $this->adminModel->getItembyId();
         $this->view->render('Editing');
     }
