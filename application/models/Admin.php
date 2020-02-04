@@ -16,7 +16,6 @@ class Admin extends Model
 
     public function bannerAdd($id, $title, $image, $link, $status, $pos)
     {
-        var_dump($image);
         $params = [
             'id' => $id,
             'title' => $title,

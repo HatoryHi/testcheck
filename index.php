@@ -1,6 +1,9 @@
 <?php
 
+require_once 'const.php';
+
 use application\core\Router;
+
 session_start();
 
 spl_autoload_register(

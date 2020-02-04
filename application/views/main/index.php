@@ -1,5 +1,6 @@
 <?php
-require_once(FRONT_END_STYLES);
+
+require_once FRONT_END_STYLES;
 
 use application\models\Admin;
 

@@ -45,14 +45,12 @@ class AdminController extends Controller
                 return $this->view->redirect('index');
             }
         }
-
         return $this->view->redirect('index');
     }
 
     public function logoutAction()
     {
         unset($_SESSION['user']);
-
         return $this->view->redirect('/');
     }
 
@@ -61,7 +59,7 @@ class AdminController extends Controller
         if (empty($_SESSION)) {
             return $this->view->redirect('index');
         }
-       return $this->view->render('Dashboard');
+        return $this->view->render('Dashboard');
     }
 
     public function createAction()
@@ -81,8 +79,8 @@ class AdminController extends Controller
             }
             $name = $image; //name image
             $tmp_name = $_FILES['image']['tmp_name']; // get tmp name
-            move_uploaded_file($tmp_name, UPLOAD_IMG.$name);
-            $new_path = UPLOAD_IMG.$name;
+            move_uploaded_file($tmp_name, ROOT . UPLOAD_IMG . $name);
+            $new_path = ROOT . UPLOAD_IMG . $name;
 
             return $new_path;
         }
@@ -109,6 +107,7 @@ class AdminController extends Controller
         if ($bool === null) {
             return $this->view->redirect('dashboard');
         }
+        return false;
     }
 
     public function deleteAction()

@@ -1,4 +1,3 @@
-<?php require_once 'const.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

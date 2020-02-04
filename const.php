@@ -21,4 +21,6 @@ CONST FOOTER = 'application/views/layouts/footer.php';
 
 CONST COPYRIGHT = 'Copyright &copy; Your Website 2020';
 
-CONST UPLOAD_IMG = '/img/';
+define("ROOT", $_SERVER['DOCUMENT_ROOT']);
+
+CONST UPLOAD_IMG = '/img/uploads/';

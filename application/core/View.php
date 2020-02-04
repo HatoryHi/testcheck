@@ -12,23 +12,23 @@ class View
     public function __construct($route)
     {
         $this->route = $route;
-        $this->path = $route['controller'].'/'.$route['action'];
+        $this->path = $route['controller'] . '/' . $route['action'];
     }
 
     public function render($title, $vars = [])
     {
         extract($vars);
-        $path = 'application/views/'.$this->path.'.php';
+        $path = 'application/views/' . $this->path . '.php';
         if (file_exists($path)) {
             require $path;
-            require 'application/views/layouts/'.$this->layout.'.php';
+            require 'application/views/layouts/' . $this->layout . '.php';
         }
     }
 
     public function redirect($url, $vars = [])
     {
         extract($vars);
-        header('location: '.$url);
+        header('location: ' . $url);
         exit();
     }
 
@@ -36,7 +36,7 @@ class View
     public static function errorCode($code)
     {
         http_response_code($code);
-        $path = 'application/views/errors/'.$code.'.php';
+        $path = 'application/views/errors/' . $code . '.php';
         if (file_exists($path)) {
             require $path;
         }
